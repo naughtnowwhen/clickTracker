@@ -24,7 +24,8 @@ var imgs = [
     'water-can.jpg',
     'wine-glass.jpg'];
 
-var ProductStorage = [];
+var productStorage = [];
+var displayThree = []; 
 
 
 for (var i = 0; i < imgs.length; i++) {
@@ -35,11 +36,11 @@ for (var i = 0; i < imgs.length; i++) {
         this.timesDisplayed = 0;
     }    
 
-    ProductStorage.push(new ImageObject(imgs[i]));         
-    console.log(ProductStorage[i]);
+    productStorage.push(new ImageObject(imgs[i]));         
+    console.log(productStorage[i]);
 }
 
-
+console.log(productStorage[0]);
 
 
 
