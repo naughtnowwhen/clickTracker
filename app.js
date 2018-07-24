@@ -3,7 +3,7 @@
 
 
 var imgs = [
-    'bag.jpg',	
+    'imgs/bag.jpg',	
     'banana.jpg',
     'bathroom.jpg',
     'boots.jpg',
@@ -26,6 +26,11 @@ var imgs = [
 
 var productStorage = [];
 
+var test = document.getElementById('test')
+var left   = document.getElementById('picLeft');
+var center = document.getElementById('picCenter');
+var right  = document.getElementById('picRight');
+
 var displayThreeToScreen = []; 
 
 var whattype = typeof(imgs[0]);
@@ -38,24 +43,15 @@ console.log(whattype);
 for (var i = 0; i < imgs.length; i++) {
     function ImageObject (img) {
         this.name = img.split('.')[0];
-        this.path = img;
+        this.path = 'imgs/' + img;
         this.totalClicks = 0;
         this.timesDisplayed = 0;
+        productStorage.push(this);
     }    
-
-    
-
-
     // oh no, i think i may be mistakenly pushing only the name of the object into the array instead of the whole object. 
-    productStorage.push(new ImageObject(imgs[i]));        
+   new ImageObject(imgs[i]);   
+     
 }
-console.log(productStorage[0]);
-console.log('the contents of product storage',productStorage);
-console.log(productStorage[0].name);
-
-
-
-
 // sweet! thanks for the tip StackOverflow
 
 
@@ -78,24 +74,16 @@ for (var i = 0; i <3; i++){
     displayThreeToScreen.push(randomSelectionFromProductStorage);
     }
 console.log(displayThreeToScreen.length);
-console.log(displayThreeToScreen[0])
+console.log(displayThreeToScreen)
 
-
-//okay, make sure to swap this back to img, i'm changing it to li to test
-//yeah, i tried to append child to a class, that doesn't work, try with an id. 
-var bullseye = document.getElementById("imgTarget");
-var newLi = document.createElement("li");
-var liText = document.createTextNode('hello is this working?');
-newLi.appendChild(liText);
-console.log(newLi);
-//it's appending text to the li but every time I try to append to <ul id="imgTarget"> i get a can't appendchild null error
+//ok that contains the path to the image, I want to link it up with the img.src
+// console.log(displayThreeToScreen[0].path);
+left.src   = displayThreeToScreen[0].path;
+center.src = displayThreeToScreen[1].path;
+right.src  = displayThreeToScreen[2].path;
 
 
 
-var threeImgFromJsToHtml = document.getElementById("imgDisplay"); // dont wory about this red, it's quokka
-
-
-         
 
   
 

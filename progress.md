@@ -14,4 +14,4 @@ for (var i = 0; i < imgs.length; i++) {
 
 selecting a random three and pushing it to my display 3 array.
 
-
+following example from Sam was better, just assigned three vars to capture the img elements, left, center, right, and then set their sources to equal the path in my random array of three. so that pushes random images to the screen. Now it's time to add event handling I think. 
