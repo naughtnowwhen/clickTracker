@@ -12,3 +12,6 @@ for (var i = 0; i < imgs.length; i++) {
     function ImageObject (img) {
         this.name = img.split('.')[0];
 
+selecting a random three and pushing it to my display 3 array.
+
+
