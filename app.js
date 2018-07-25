@@ -3,7 +3,7 @@
 
 
 var imgs = [
-    'imgs/bag.jpg',	
+    'bag.jpg',	
     'banana.jpg',
     'bathroom.jpg',
     'boots.jpg',
@@ -17,30 +17,29 @@ var imgs = [
     'pet-sweep.jpg',
     'scissors.jpg',
     'shark.jpg',
-    'sweep.png',
+    'sweep.jpg',
     'tauntaun.jpg',
     'unicorn.jpg',
-    'usb.gif',
+    'usb.jpg',
     'water-can.jpg',
     'wine-glass.jpg'];
 
 var productStorage = [];
 
-var test = document.getElementById('test')
+var bucketDiv = document.getElementById('imgDisplay');
 var left   = document.getElementById('picLeft');
 var center = document.getElementById('picCenter');
 var right  = document.getElementById('picRight');
+var test = document.getElementById('testing');
+console.log(test);
+
 
 var displayThreeToScreen = []; 
 
 var whattype = typeof(imgs[0]);
 console.log(whattype);
 
-// ok yeah, those are just strings
-
-
-
-for (var i = 0; i < imgs.length; i++) {
+// patricia explained why this is considered bad practice. It's called a naked for loop, which means it's out of control and running all the time, when we only want it to run when we call it. 
     function ImageObject (img) {
         this.name = img.split('.')[0];
         this.path = 'imgs/' + img;
@@ -49,69 +48,47 @@ for (var i = 0; i < imgs.length; i++) {
         productStorage.push(this);
     }    
     // oh no, i think i may be mistakenly pushing only the name of the object into the array instead of the whole object. 
-   new ImageObject(imgs[i]);   
-     
+   function constructorLoop() {
+    for (var i = 0; i < imgs.length; i++) {
+    new ImageObject(imgs[i]);   
+    }
 }
-// sweet! thanks for the tip StackOverflow
+
+constructorLoop();
 
 
-// sweet, everytime i type a new random value is generated. That's neat and something that'd i'd never notice without Quokka. Quokka is awesome! 
 
-//Ok so how to code this as DRYly as possible? It'd be nice to have one instance of assignment, i want to assign three times. So i'm wary of using var, maybe it'd work just fine. But let comes to mind as something more willing to be redefined as we iterate through the 3 length for loop. But also a var could work by first declaring it to undefined first, then assigning next, pushing, then on the next loop it'll be reset back to undefined and ready to go for a new assignment. Try a couple of methods? haha, I probably didn't need to think about any of this, huh? it'll just work with a stock var declaration?
-
-
-//oh! be careful your pushing strings from imgs!
-// for (var i = 0; i <3; i++){
-// var randomSelectionFromProductStorage = imgs[Math.floor(Math.random() * imgs.length)];
-// displayThreeToScreen.push(randomSelectionFromProductStorage);
-// }
-// console.log(displayThreeToScreen);
-
-// ok good it's randomly picking three objects from productStorage
-console.log(productStorage.length);  
+function looper (){
 for (var i = 0; i <3; i++){
     var randomSelectionFromProductStorage = productStorage[Math.floor(Math.random() * productStorage.length)];
     displayThreeToScreen.push(randomSelectionFromProductStorage);
     }
-console.log(displayThreeToScreen.length);
-console.log(displayThreeToScreen)
+console.log(displayThreeToScreen.length);    
+console.log(displayThreeToScreen[0].name);
+}
 
-//ok that contains the path to the image, I want to link it up with the img.src
-// console.log(displayThreeToScreen[0].path);
-left.src   = displayThreeToScreen[0].path;
-center.src = displayThreeToScreen[1].path;
-right.src  = displayThreeToScreen[2].path;
+// left.src = displayThreeToScreen[0].path;
+// console.log(left.src   = displayThreeToScreen[0].path);
 
 
+// center.src = displayThreeToScreen[1].path;
+// console.log(center.src = displayThreeToScreen[1].path);
+
+// right.src  = displayThreeToScreen[2].path;
+
+// moved looper from the outside of eavesdropper function to see more about what eavesdropper is doing. 
+looper();
 
 
-  
-
-// this works, now lets get it to loop three times and push to an array for display. copy paste and keep this for reference. 
-var randomSelection = imgs[Math.floor(Math.random() * imgs.length)];
-
-console.log(randomSelection);
+function eavesdropper (event) {
+console.log(event.type);
+// looper();
+}
 
 
-
-// console.log(productStorage[0]);
-
-
-
-
+bucketDiv.addEventListener('click', eavesdropper);
 
 
 
 
-
-
-
-
-
-
-// these belong in the ImageObject later when it works
-        // this.path = img.split('.');
-
-// this.totalclicks = totalclicks;
-        // this.timesDisplayed = timesDisplayed;
 
